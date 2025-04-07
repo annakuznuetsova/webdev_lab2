@@ -1,0 +1,4 @@
+Wi-Fi,Allows guest to have Internet connection everywhere within the hotel's vicinity.
+Library,Guests can borrow books for the time of their stay.
+Swimming Pool,Guests can enjoy using a pool as often as they wish during their hotel stay.
+Restaurant,Hotel restaurant offers a wide variety of dishes for guests to try.
