@@ -41,7 +41,7 @@ public class BookingService {
         bookingDAO.addBooking(booking);
         roomDAO.setRoomAvailability(roomNumber, false);
 
-        return null; // null means success
+        return null; 
     }
 
     public boolean cancelBooking(int roomNumber) {
