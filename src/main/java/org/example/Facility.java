@@ -1,76 +1,30 @@
 package org.example;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Facility {
-    private final String name;
-    private final String description;
-    private static final List<Facility> facilities = new ArrayList<>();
+    private int id;
+    public String name;
+    public String description;
+
+    public Facility() {}
 
     public Facility(String name, String description) {
         this.name = name;
         this.description = description;
     }
 
+    public Facility(int id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
+    // Getters and setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
     public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
     public String getDescription() { return description; }
-
-    public static void addFacility(String name, String description) {
-        Facility newFacility = new Facility(name, description);
-        if (!facilities.contains(newFacility)) {
-            facilities.add(newFacility);
-        } else {
-            System.out.println("Facility already exists.");
-        }
-    }
-
-    public static List<Facility> getFacilities() {
-        return facilities;
-    }
-
-    public static void removeFacility(String name) {
-        boolean removed = facilities.removeIf(facility -> facility.getName().equalsIgnoreCase(name));
-        if (removed) {
-            System.out.println("Facility removed successfully.");
-        } else {
-            System.out.println("Facility not found.");
-        }
-    }
-
-    public static void saveFacilitiesToFile(String filename) {
-        DataStorage.clearFile(filename);
-        for (Facility facility : facilities) {
-            String line = facility.getName() + "," + facility.getDescription();
-            DataStorage.appendToFile(filename, line);
-        }
-    }
-
-    public static void loadFacilitiesFromFile(String filename) {
-        facilities.clear();
-        List<String> lines = DataStorage.loadFromFile(filename);
-        for (String line : lines) {
-            String[] parts = line.split(",", 2);
-            if (parts.length == 2) {
-                addFacility(parts[0], parts[1]);
-            }
-        }
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Facility facility = (Facility) obj;
-        return name.equalsIgnoreCase(facility.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return name.toLowerCase().hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "Facility{" + "name='" + name + '\'' + ", description='" + description + '\'' + '}';
-    }
+    public void setDescription(String description) { this.description = description; }
 }

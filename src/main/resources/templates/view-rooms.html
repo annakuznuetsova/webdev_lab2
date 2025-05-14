@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Rooms</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #3a5c8f, #7fa6cc, #ffe0a3 90%);
+      color: #333;
+    }
+
+    .content-wrapper {
+      width: 90%;
+      margin: 0 auto;
+      padding-top: 120px; /* Space for title and home button */
+    }
+
+    .page-title {
+      position: fixed;
+      top: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      color: #2c3e50;
+      z-index: 2;
+    }
+
+    .home-button {
+      position: fixed;
+      top: 85px;
+      left: 40px;
+      padding: 10px 20px;
+      background-color: #2c3e50;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+    }
+
+    th {
+      background-color: #2c3e50;
+      color: white;
+      font-weight: bold;
+      padding: 14px;
+    }
+
+    td {
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #e0eaff;
+    }
+  </style>
+</head>
+<body>
+
+<h1 class="page-title">All Rooms</h1>
+<a href="/" class="home-button">← Home</a>
+
+<div class="content-wrapper">
+  <table>
+    <thead>
+    <tr>
+      <th>Number</th>
+      <th>Type</th>
+      <th>Price</th>
+      <th>Available?</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="room : ${rooms}">
+      <td th:text="${room.number}">101</td>
+      <td th:text="${room.type}">Single</td>
+      <td th:text="${room.price}">50.0</td>
+      <td th:text="${room.available}">true</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

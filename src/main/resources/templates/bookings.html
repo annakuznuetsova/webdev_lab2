@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Bookings</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #3a5c8f, #7fa6cc, #ffe0a3 90%);
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .home-button-wrapper {
+      margin-bottom: 1.5rem;
+    }
+
+    .home-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #2c3e50;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      width: 90%;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+    }
+
+    th {
+      background-color: #2c3e50;
+      color: white;
+      font-weight: bold;
+      padding: 12px;
+    }
+
+    td {
+      padding: 12px;
+      border: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #e0eaff;
+    }
+  </style>
+</head>
+<body>
+
+<h2>All Bookings</h2>
+
+<div style="width: 90%; margin: auto;">
+  <a href="/" class="home-button" style="margin-left: 3rem;">← Home</a>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Guest</th>
+      <th>Contact</th>
+      <th>Status</th>
+      <th>Room</th>
+      <th>Type</th>
+      <th>Check-In</th>
+      <th>Check-Out</th>
+      <th>Total Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="booking : ${bookings}">
+      <td th:text="${booking.guest.firstName} + ' ' + ${booking.guest.lastName}">John Doe</td>
+      <td th:text="${booking.guest.contact}">+123</td>
+      <td th:text="${booking.guest.status}">VIP</td>
+      <td th:text="${booking.room.number}">101</td>
+      <td th:text="${booking.room.type}">Deluxe</td>
+      <td th:text="${booking.checkIn}">2025-05-01</td>
+      <td th:text="${booking.checkOut}">2025-05-05</td>
+      <td th:text="${booking.totalPrice}">300.00</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

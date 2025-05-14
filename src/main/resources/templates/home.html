@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Management Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+          font-family: 'Open Sans', sans-serif;
+          background: linear-gradient(to bottom, #3a5c8f, #7fa6cc, #ffe0a3);
+          padding: 40px 40px 0 40px; /* top, right, bottom, left */
+          margin: 0;
+          min-height: 100vh; /* ensures it fills the viewport */
+          box-sizing: border-box;
+        }
+        h1, h2 {
+          font-family: 'Montserrat', sans-serif;
+        }
+        h1 {
+          text-align: center;
+          margin-bottom: 40px;
+        }
+
+        .section {
+          max-width: 600px;
+          margin: 20px auto;
+        }
+
+        .section h2 {
+          text-align: center;
+          color: #333;
+          margin-bottom: 10px;
+        }
+
+        .menu a {
+          display: block;
+          background-color: #3498db;
+          color: white;
+          text-decoration: none;
+          padding: 12px;
+          margin: 8px 0;
+          border-radius: 8px;
+          text-align: center;
+          transition: background-color 0.3s ease;
+        }
+
+        .menu a:hover {
+          background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+<h1>⁕ Hotel Management Dashboard ⁕</h1>
+
+<div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+    <div class="section">
+        <h2> View Records</h2>
+        <div class="menu">
+            <a th:href="@{/guests}">Guests</a>
+            <a th:href="@{/rooms}">Rooms</a>
+            <a th:href="@{/bookings}">Bookings</a>
+            <a th:href="@{/facilities}">Facilities</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2> Actions</h2>
+        <div class="menu">
+            <a th:href="@{/guests/add}">Add Guest</a>
+            <a th:href="@{/guests/update-contact}">Update Guest Contact</a>
+            <a th:href="@{/rooms/add}">Add Room</a>
+            <a th:href="@{/rooms/remove}">Remove Room</a>
+            <a th:href="@{/rooms/edit-lookup}">Edit Room</a>
+            <a th:href="@{/book-room}">Book a Room</a>
+            <a th:href="@{/bookings/cancel}">Cancel Booking</a>
+            <a th:href="@{/facilities/add}">Add Facility</a>
+            <a th:href="@{/facilities/remove}">Remove Facility</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2> Other</h2>
+        <div class="menu">
+            <a th:href="@{/hotel-info}">Hotel Info</a>
+<!--            <a href="#" onclick="window.close()">Exit</a>-->
+        </div>
+    </div>
+</div>
+</body>
+</html>

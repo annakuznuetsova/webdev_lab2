@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Select Room to Edit</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #3a5c8f, #7fa6cc, #ffe0a3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Open Sans', sans-serif;
+    }
+    .form-container {
+      background-color: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      width: 400px;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .error {
+      color: red;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="form-container">
+  <h2>Edit a Room</h2>
+
+  <div class="error" th:if="${error}" th:text="${error}"></div>
+
+  <form th:action="@{/rooms/check-edit}" method="post">
+    <label>Enter Room Number:
+      <input type="number" name="number" min="1" required />
+    </label>
+    <button type="submit">Edit Room</button>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Guest Contact</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom, #3a5c8f, #7fa6cc, #ffe0a3);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      background-color: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      width: 400px;
+      position: relative;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 0.3rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 12px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1e8449;
+    }
+
+    .back-button {
+      position: absolute;
+      top: -30px;
+      left: 0;
+      background-color: #34495e;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .error, .success {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .error { color: red; }
+    .success { color: green; }
+
+  </style>
+</head>
+<body>
+<div class="form-container">
+  <a href="/" class="back-button">⬅ Home</a>
+
+  <h2>Update Guest Contact</h2>
+
+  <div class="error" th:if="${error}" th:text="${error}"></div>
+  <div class="success" th:if="${message}" th:text="${message}"></div>
+
+  <form th:action="@{/guests/update-contact}" method="post">
+    <label>First Name:
+      <input type="text" name="firstName" required>
+    </label>
+
+    <label>Last Name:
+      <input type="text" name="lastName" required>
+    </label>
+
+    <label>New Contact:
+      <input type="text" name="newContact" required>
+    </label>
+
+    <button type="submit">Update Contact</button>
+  </form>
+</div>
+</body>
+</html>

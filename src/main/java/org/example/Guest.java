@@ -20,6 +20,7 @@ public class Guest {
     public String getLastName() { return lastName; }
     public String getContact() { return contact; }
     public double getDiscount() { return discount; }
+    public String getStatus() { return status; }
 
     public void setDiscount(double discount) {
         if (discount >= 0 && discount <= 100) {
@@ -31,22 +32,6 @@ public class Guest {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public static Guest fromString(String line) {
-        String[] parts = line.split(",");
-        Guest guest = new Guest(parts[0], parts[1], parts[2]);
-        if (parts.length > 3) {
-            try {
-                guest.setDiscount(Double.parseDouble(parts[3]));
-            } catch (NumberFormatException e) {
-                guest.setDiscount(0.0); // fallback
-            }
-        }
-        if (parts.length > 4) {
-            guest.setStatus(parts[4]);
-        }
-        return guest;
     }
 
     public String toFileString() {
@@ -75,6 +60,7 @@ public class Guest {
                 ", lastName='" + lastName + '\'' +
                 ", contact='" + contact + '\'' +
                 ", discount=" + discount +
+                ", status=" + status +
                 '}';
     }
 }

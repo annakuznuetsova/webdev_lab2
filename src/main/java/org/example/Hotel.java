@@ -39,7 +39,7 @@ public class Hotel {
     }
 
     public void viewHotelInfo() {
-        System.out.println("\n~~~~~ Hotel Information ~~~~~ ");
+        System.out.println("\n~~~~~~~~~~ Hotel Information ~~~~~~~~~~ ");
         System.out.println("Name: " + name);
         System.out.println("Address: " + address);
         System.out.println("Rating: " + rating);

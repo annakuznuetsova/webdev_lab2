@@ -1,4 +1,5 @@
 package org.example;
+
 import java.util.Objects;
 import java.time.LocalDate;
 
@@ -8,9 +9,8 @@ public class Booking {
     private final LocalDate checkIn;
     private final LocalDate checkOut;
     private final double totalPrice;
-    private final boolean isActive;
 
-    public Booking(Room room, Guest guest, LocalDate checkIn, LocalDate checkOut) {
+    public Booking(Room room, Guest guest, LocalDate checkIn, LocalDate checkOut, boolean skipBooking) {
         if (checkIn.isAfter(checkOut)) {
             throw new IllegalArgumentException("Check-in date must be before check-out date.");
         }
@@ -20,9 +20,15 @@ public class Booking {
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.totalPrice = calculateTotal();
-        this.isActive = true;
 
-        room.bookRoom();
+        if (!skipBooking) {
+            room.bookRoom();  // This would throw if the room is already marked unavailable
+        }
+    }
+
+    // Existing constructor remains:
+    public Booking(Room room, Guest guest, LocalDate checkIn, LocalDate checkOut) {
+        this(room, guest, checkIn, checkOut, false);  // normal booking flow
     }
 
     public double calculateTotal() {
@@ -32,10 +38,25 @@ public class Booking {
         return basePrice - discountAmount;
     }
 
-    public boolean isActive() { return isActive; }
-    public Room getRoom() { return room; }
-    public Guest getGuest() { return guest; }
-    public double getTotalPrice() { return totalPrice; }
+    public Room getRoom() {
+        return room;
+    }
+
+    public Guest getGuest() {
+        return guest;
+    }
+
+    public LocalDate getCheckIn() {
+        return checkIn;
+    }
+
+    public LocalDate getCheckOut() {
+        return checkOut;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -61,7 +82,6 @@ public class Booking {
                 ", checkIn=" + checkIn +
                 ", checkOut=" + checkOut +
                 ", totalPrice=" + totalPrice +
-                ", isActive=" + isActive +
                 '}';
     }
 }

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cancel Booking</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom, #3a5c8f, #7fa6cc, #ffe0a3);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      background-color: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      width: 400px;
+      position: relative;
+    }
+
+    .back-button {
+      position: absolute;
+      top: -35px;
+      left: -10px;
+      background-color: #bdc3c7;
+      color: black;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #95a5a6;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 0.3rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 12px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #c0392b;
+    }
+
+    .error {
+      color: red;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .success {
+      color: green;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="form-container">
+  <a th:href="@{/}" class="back-button">⬅ Home</a>
+
+  <h2>Cancel Booking</h2>
+
+  <div class="error" th:if="${error}" th:text="${error}"></div>
+  <div class="success" th:if="${message}" th:text="${message}"></div>
+
+  <form th:action="@{/bookings/cancel}" method="post">
+    <label>Room Number:
+      <input type="number" name="roomNumber" required min="1">
+    </label>
+
+    <button type="submit">Cancel Booking</button>
+  </form>
+</div>
+</body>
+</html>
