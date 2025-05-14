@@ -35,7 +35,7 @@ public class RoomDAO {
                         rs.getDouble("price")
                 );
                 if (!rs.getBoolean("is_available")) {
-                    room.bookRoom(); // mark room as booked if not available
+                    room.bookRoom(); 
                 }
                 rooms.add(room);
             }
