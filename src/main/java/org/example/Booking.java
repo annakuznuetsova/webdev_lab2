@@ -22,13 +22,12 @@ public class Booking {
         this.totalPrice = calculateTotal();
 
         if (!skipBooking) {
-            room.bookRoom();  // This would throw if the room is already marked unavailable
+            room.bookRoom();  
         }
     }
 
-    // Existing constructor remains:
     public Booking(Room room, Guest guest, LocalDate checkIn, LocalDate checkOut) {
-        this(room, guest, checkIn, checkOut, false);  // normal booking flow
+        this(room, guest, checkIn, checkOut, false); 
     }
 
     public double calculateTotal() {
