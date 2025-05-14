@@ -46,7 +46,6 @@ public class FacilityController {
         return "redirect:/facilities";
     }
 
-    // 🟢 FIXED: Corrected route to match the GET template path (/facilities/remove)
     @GetMapping("/facilities/remove")
     public String showRemoveFacilityPage(Model model) {
         List<Facility> facilities = facilityService.getAllFacilities();
@@ -54,7 +53,6 @@ public class FacilityController {
         return "remove-facility";
     }
 
-    // 🟢 FIXED: Now removes by name (from dropdown), not ID
     @PostMapping("/facilities/remove")
     public String removeFacility(@RequestParam String name, RedirectAttributes redirectAttributes) {
         boolean removed = facilityService.removeFacility(name);
