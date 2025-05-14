@@ -20,7 +20,7 @@ public class GuestController {
     public String viewGuests(Model model) {
         List<Guest> guests = guestService.getAllGuests();
         model.addAttribute("guests", guests);
-        return "guests"; // Resolves to guests.html
+        return "guests"; 
     }
 
     @GetMapping("/guests/add")
@@ -49,7 +49,7 @@ public class GuestController {
 
     @GetMapping("/guests/update-contact")
     public String showUpdateContactForm() {
-        return "update-contact"; // name of the HTML file
+        return "update-contact"; 
     }
 
     @PostMapping("/guests/update-contact")
