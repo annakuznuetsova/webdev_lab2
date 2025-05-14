@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.util.List;
 
 @Controller
@@ -18,7 +17,7 @@ public class RoomController {
     public String viewAllRooms(Model model) {
         List<Room> rooms = roomService.getAllRooms();
         model.addAttribute("rooms", rooms);
-        return "view-rooms";     // → templates/view-rooms.html
+        return "view-rooms";     
     }
 
     @GetMapping("/add")
@@ -79,7 +78,7 @@ public class RoomController {
         }
 
         model.addAttribute("room", room);
-        return "edit-room"; // your template
+        return "edit-room"; 
     }
 
     @PostMapping("/check-edit")
@@ -100,7 +99,7 @@ public class RoomController {
 
     @GetMapping("/edit-room-form")
     public String showEditLookupForm() {
-        return "edit-room-lookup";  // New HTML page
+        return "edit-room-lookup"; 
     }
 
     @PostMapping("/edit-room-form")
@@ -123,7 +122,7 @@ public class RoomController {
 
     @GetMapping("/remove")
     public String showRemoveForm() {
-        return "remove-room"; // your HTML form file
+        return "remove-room"; 
     }
 
     @PostMapping("/remove")
