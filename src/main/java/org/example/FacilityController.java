@@ -54,8 +54,8 @@ public class FacilityController {
     }
 
     @PostMapping("/facilities/remove")
-    public String removeFacility(@RequestParam String name, RedirectAttributes redirectAttributes) {
-        boolean removed = facilityService.removeFacility(name);
+    public String removeFacility(@RequestParam int id, RedirectAttributes redirectAttributes) {
+        boolean removed = facilityService.removeFacility(id);
 
         if (!removed) {
             redirectAttributes.addFlashAttribute("error", "Could not remove facility. It may not exist.");
