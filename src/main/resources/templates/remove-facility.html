@@ -101,8 +101,8 @@
     <div class="message" th:if="${message}" th:text="${message}"></div>
     <div class="error" th:if="${error}" th:text="${error}"></div>
 
-    <form th:action="@{/remove}" method="post">
-        <label for="id">Select Facility:</label>
+    <form th:action="@{/facilities/remove}" method="post">
+    <label for="id">Select Facility:</label>
         <select id="id" name="id" required>
             <option th:each="facility : ${facilities}"
                     th:value="${facility.id}"
