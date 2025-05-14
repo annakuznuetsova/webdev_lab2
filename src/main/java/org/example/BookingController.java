@@ -53,13 +53,11 @@ public class BookingController {
         return "redirect:/";
     }
 
-    // Show cancel form
     @GetMapping("/bookings/cancel")
     public String showCancelForm() {
         return "cancel-booking";
     }
 
-    // Handle cancel submission
     @PostMapping("/bookings/cancel")
     public String cancelBooking(@RequestParam int roomNumber, Model model) {
         boolean success = bookingService.cancelBooking(roomNumber);
