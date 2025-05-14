@@ -86,12 +86,12 @@ public class BookingDAO {
                         rs.getDouble("room_price")
                 );
                 if (!rs.getBoolean("is_available")) {
-                    room.bookRoom(); // sets available = false
+                    room.bookRoom(); 
                 }
 
                 LocalDate checkIn = rs.getDate("check_in").toLocalDate();
                 LocalDate checkOut = rs.getDate("check_out").toLocalDate();
-                Booking booking = new Booking(room, guest, checkIn, checkOut, true); // ← skip actual booking!
+                Booking booking = new Booking(room, guest, checkIn, checkOut, true); 
 
                 bookings.add(booking);
             }
