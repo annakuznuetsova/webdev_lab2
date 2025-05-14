@@ -28,8 +28,8 @@ public class FacilityService {
         return true;
     }
 
-    public boolean removeFacility(String name) {
-        return facilityDAO.removeFacility(name);
+    public boolean removeFacility(int id) {
+        return facilityDAO.removeFacility(id);
     }
 
     public List<Facility> getAllSorted(int sortOption) {
