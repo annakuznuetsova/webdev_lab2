@@ -21,15 +21,15 @@ public class FacilityDAO {
         }
     }
 
-    public boolean removeFacility(String name) {
-        String sql = "DELETE FROM facility WHERE LOWER(name) = LOWER(?)";
+    public boolean removeFacility(int id) {
+        String sql = "DELETE FROM facility WHERE id = ?";
 
         try (Connection conn = Database.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, name);
+            stmt.setInt(1, id);
             int deleted = stmt.executeUpdate();
             return deleted > 0;
         } catch (SQLException e) {
-            System.out.println("Database error when removing facility: " + e.getMessage());
+            System.out.println("Database error when removing facility by ID: " + e.getMessage());
             return false;
         }
     }
