@@ -38,23 +38,6 @@ public class Hotel {
         return rooms.stream().filter(room -> !room.isAvailable()).collect(Collectors.toList());
     }
 
-    public void viewHotelInfo() {
-        System.out.println("\n~~~~~~~~~~ Hotel Information ~~~~~~~~~~ ");
-        System.out.println("Name: " + name);
-        System.out.println("Address: " + address);
-        System.out.println("Rating: " + rating);
-        System.out.println("Total Rooms: " + rooms.size());
-        System.out.println("Available Rooms: " + getAvailableRooms().size());
-        System.out.println("Booked Rooms: " + getBookedRooms().size());
-
-        System.out.println("\nRoom Details:");
-        for (Room room : rooms) {
-            System.out.println("Room " + room.getNumber() + " | Type: " + room.getType() +
-                    " | Price: $" + room.getPrice() +
-                    " | Status: " + (room.isAvailable() ? "Available" : "Booked"));
-        }
-    }
-
     @Override
     public String toString() {
         return "Hotel{" +
